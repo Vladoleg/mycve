@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Title</title>
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="mainpage">
+        <header>Last 15 vulnerabilities for {%block text%}{%endblock%}</header>
+        <menu>
+            <ul>
+                {%for i in vendors%}
+                <li>
+                    <a href={{url_for('vndr', vendor=i.url)}}> {{i.name}} </a>
+                </li>
+            </ul>
+        </menu>
+        <content>{% block table %} {% endblock %}</content>
+    </div>
+</body>
+</html>

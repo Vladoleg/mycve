@@ -1,0 +1,19 @@
+.grid-container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 50px auto;
+  background-color: white;
+}
+.header{
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+  grid-column: 1/3;
+  text-align: center;
+  background-color: black;
+  color: blue;
+}
+.mmenu {
+  background-color: rgb(112, 109, 104);
+}

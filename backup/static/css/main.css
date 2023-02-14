@@ -1,0 +1,43 @@
+.mainpage * {
+  border: 1px solid black;
+  text-align: center;
+  padding: 0%;
+}
+
+.mainpage {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "header header"
+    "menu content";
+}
+
+header {
+  grid-area: header;
+  background-color: black;
+  color: whitesmoke;
+}
+menu {
+  grid-area: menu;
+  color: coral;
+  background-color: dimgray;
+}
+content {
+  grid-area: content;
+}
+
+content {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #dddddd;
+}

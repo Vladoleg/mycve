@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>GigaVul</title>
+    <link href="../static/css/main.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/menu.css" rel="stylesheet" type="text/css">
+    <link href="../static/css/table.css" rel="stylesheet" type="text/css">
+</head>
+<body class="grid-container">
+    <div class="header"> <h2> text </h2> </div>
+    <nav class="mmenu">
+        {% for i in vendors %}
+        <ul class="mainmenu">
+            <li>
+                <a href="#0"> {{i.name}} </a>
+                {% for j in params %}
+                <ul class="submenu">
+                    <li> <a href="#01"> {{j}} </a> </li>
+                </ul>
+                    {% endfor %}
+            </li>
+        </ul>
+        {% endfor %}
+    </nav>
+    <div class="table"> {%block table%} {%endblock%} </div>
+</body>
+</html>
