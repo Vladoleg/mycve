@@ -15,10 +15,10 @@
         {% for i in vendors %}
         <ul class="mainmenu">
             <li>
-                <a href="#0"> {{i.name}} </a>
+                <a href=""> {{i.name}} </a>
                 {% for j in params %}
                 <ul class="submenu">
-                    <li> <a href="#01"> {{j}} </a> </li>
+                    <li> <a href={{url_for('vndr', vendor=j.name)}}> {{j}} </a> </li>
                 </ul>
                     {% endfor %}
             </li>

@@ -32,15 +32,70 @@ now = dt.datetime.today()
 week = now - dt.timedelta(days=7)
 month = now - dt.timedelta(days=30)
 year = now - dt.timedelta(days=365)
+t = [week, month, year]
+
+
 
 #app function
 app = Flask(__name__)
 elem=[]
-li={'id':1, 'Published':1, 'last-modified':1,'_id':0}
-for i in collection.find({'vendors': 'redhat'}, li).limit(15):
+li={'id':1, 'Published':1, 'vendors':1, 'last-modified':1,'_id':0}
+'''for i in collection.find({'vendors': 'fujitsu'}, li).limit(15):
     elem.append(i)
     pprint (elem)
+'''
+def count_20(vendor):
+    x = 0
+    for i in collection.find({'vendors': vendor}, li).limit(20):
+        elem.append(i)
+        x = x+1
+    pprint (elem)
+    print (x)
 
+
+chas = input('Enter a number  :')
+
+def my_all(vendor, chas):
+    x = 0
+    if chas=='week': c=0
+    elif chas=='month': c=1
+    elif chas=='year': c=2
+    for i in collection.find({'$and':[{'last-modified':{'$gt':t[c]}}, {'vendors': vendor}]}, li):
+        elem.append(i)
+        x = x+1
+    pprint(elem)
+    print (x)
+
+def my_week(vendor):
+    x = 0
+    for i in collection.find({'$and':[{'last-modified':{'$gt':week}}, {'vendors': vendor}]}, li):
+        elem.append(i)
+        x = x+1
+    pprint(elem)
+    print (x)
+
+def my_month(vendor):
+    x = 0
+    for i in collection.find({'$and':[{'last-modified':{'$gt':month}}, {'vendors': vendor}]}, li):
+        elem.append(i)
+        x = x+1
+    pprint(elem)
+    print (x)
+
+def my_year(vendor):
+    x = 0
+    for i in collection.find({'$and':[{'last-modified':{'$gt':year}}, {'vendors': vendor}]}, li):
+        elem.append(i)
+        x = x+1
+    pprint(elem)
+    print (x)
+
+
+my_all('huawei', chas)
+
+'''count_20('huawei')'''
+
+'''my_year('redhat')'''
 
 '''
 @app.route("/")
