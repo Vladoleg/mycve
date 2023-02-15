@@ -66,29 +66,6 @@ def my_all(vendor, chas):
     pprint(elem)
     print (x)
 
-def my_week(vendor):
-    x = 0
-    for i in collection.find({'$and':[{'last-modified':{'$gt':week}}, {'vendors': vendor}]}, li):
-        elem.append(i)
-        x = x+1
-    pprint(elem)
-    print (x)
-
-def my_month(vendor):
-    x = 0
-    for i in collection.find({'$and':[{'last-modified':{'$gt':month}}, {'vendors': vendor}]}, li):
-        elem.append(i)
-        x = x+1
-    pprint(elem)
-    print (x)
-
-def my_year(vendor):
-    x = 0
-    for i in collection.find({'$and':[{'last-modified':{'$gt':year}}, {'vendors': vendor}]}, li):
-        elem.append(i)
-        x = x+1
-    pprint(elem)
-    print (x)
 
 
 my_all('huawei', chas)
