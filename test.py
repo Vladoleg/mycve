@@ -35,9 +35,11 @@ year = now - dt.timedelta(days=365)
 
 #app function
 app = Flask(__name__)
-
-for i in collection.find({'vendors': 'redhat'}).limit(15):
-    pprint (i['id'])
+elem=[]
+li={'id':1, 'Published':1, 'last-modified':1,'_id':0}
+for i in collection.find({'vendors': 'redhat'}, li).limit(15):
+    elem.append(i)
+    pprint (elem)
 
 
 '''
