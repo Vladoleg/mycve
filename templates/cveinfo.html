@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block table %}
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+    </tr>
+    {% for i in fields %}
+    <tr>
+        <td>{{i}}</td>
+        <td>{{cve[i]}}</td>
+    {% endfor %}
+    </tr>
+</table>
+{% endblock %}

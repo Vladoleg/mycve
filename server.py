@@ -25,6 +25,8 @@ vendors = [
     {'name': 'intel', 'url': 'intel'}
 ]
 params = ['week', 'month', 'year']
+cve=[]
+a={}
 
 #static variables for timelimits
 now = dt.datetime.today()
@@ -42,7 +44,9 @@ li={'id':1, 'Published':1, 'vendors':1, 'last-modified':1,'_id':0}
 def last_15(vendor):
     elem.clear()
     for i in collection.find({'vendors': vendor}, li).sort('last-modified',-1).limit(15):
-        elem.append(i)
+        a = i
+        a['url'] = 'cveinfo/' + i['id']
+        elem.append(a)
     return elem
 
 def t_limit(vendor, chas):
@@ -51,23 +55,33 @@ def t_limit(vendor, chas):
     elif chas=='month': c=1
     elif chas=='year': c=2
     for i in collection.find({'$and':[{'last-modified':{'$gt':t[c]}}, {'vendors': vendor}]}, li).sort('last-modified', -1):
-        elem.append(i)
+        a = i
+        a['url'] = 'cveinfo/' + i['id']
+        elem.append(a)
 
 
 @app.route("/")
 def index():
     return render_template("index.html", vendors=vendors, params=params)
 
+
 @app.route("/<vendor>/<chas>")
 def tt_limit(vendor, chas):
     t_limit(vendor, chas)
-    return render_template('vendor.html', vendors=vendors, params=params, e=elem, v=vendor, c=chas)
+    return render_template('vendor2.html', vendors=vendors, params=params, e=elem, v=vendor, c=chas)
 
 
 @app.route("/<vendor>")
 def vndr(vendor):
     last_15(vendor)
-    return render_template("vendor.html", vendors=vendors, e=elem, v=vendor)
+    return render_template("vendor.html", vendors=vendors, params=params, e=elem, v=vendor)
+
+
+@app.route("/cveinfo/<cveid>")
+def cvepage(cveid):
+    cve = collection.find_one({'id': cveid})
+    return render_template('cveinfo.html', vendors=vendors, params=params, cve=cve, fields=fields)
+
 
 if __name__=="__main__":
     app.run(debug=True, host="127.0.0.1", port=5000)
