@@ -18,7 +18,7 @@
                 <a href=""> {{i.name}} </a>
                 {% for j in params %}
                 <ul class="submenu">
-                    <li> <a href={{url_for('vndr', vendor=j.name)}}> {{j}} </a> </li>
+                    <li> <a href={{url_for('tt_limit', vendor=i.url, chas=j)}}> {{j}} </a> </li>
                 </ul>
                     {% endfor %}
             </li>
