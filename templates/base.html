@@ -10,12 +10,12 @@
     <link href="../static/css/table.css" rel="stylesheet" type="text/css">
 </head>
 <body class="grid-container">
-    <div class="header"> <h2> text </h2> </div>
+    <div class="header"> <h2> {% block text%} {%endblock%} </h2> </div>
     <nav class="mmenu">
         {% for i in vendors %}
         <ul class="mainmenu">
             <li>
-                <a href=""> {{i.name}} </a>
+                <a href={{url_for('vndr', vendor=i.url)}}> {{i.name}} </a>
                 {% for j in params %}
                 <ul class="submenu">
                     <li> <a href={{url_for('tt_limit', vendor=i.url, chas=j)}}> {{j}} </a> </li>
