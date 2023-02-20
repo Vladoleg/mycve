@@ -9,7 +9,7 @@
     display: block;
     text-decoration: none;
     padding: 5px;
-    color: rgb(104, 35, 35);
+    color: rgb(196, 193, 51);
 }
   
 .mainmenu a:hover {
@@ -26,7 +26,7 @@
   }
   
 .submenu a:hover {
-    background-color: #666;
+    background-color: #3032ad;
   }
   
 .submenu {
