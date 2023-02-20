@@ -45,7 +45,7 @@ def last_15(vendor):
     elem.clear()
     for i in collection.find({'vendors': vendor}, li).sort('last-modified',-1).limit(15):
         a = i
-        a['url'] = 'cveinfo/' + i['id']
+        a['url'] = '/cveinfo/' + i['id']
         elem.append(a)
     return elem
 
@@ -56,7 +56,7 @@ def t_limit(vendor, chas):
     elif chas=='year': c=2
     for i in collection.find({'$and':[{'last-modified':{'$gt':t[c]}}, {'vendors': vendor}]}, li).sort('last-modified', -1):
         a = i
-        a['url'] = 'cveinfo/' + i['id']
+        a['url'] = '/cveinfo/' + i['id']
         elem.append(a)
 
 
